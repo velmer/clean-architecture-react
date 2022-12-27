@@ -1,12 +1,12 @@
 import { User } from "../../../domain/entities/user";
+import UserListItem from "./components/UserListItem";
 
 interface Props {
   users: User[];
+  onUserDeleted: () => void;
 }
 
-const UserList: React.FC<Props> = (props: Props) => {
-  const { users } = props;
-
+const UserList: React.FC<Props> = ({ users, onUserDeleted } : Props) => {
   if (users.length === 0) {
     return <p>Loading...</p>;
   }
@@ -15,9 +15,7 @@ const UserList: React.FC<Props> = (props: Props) => {
     <ul>
       {users.map((user, index) => {
         return (
-          <li key={index}>
-            {user.id} - {user.name}
-          </li>
+          <UserListItem key={index} user={user} onDelete={() => onUserDeleted()} />
         );
       })}
     </ul>

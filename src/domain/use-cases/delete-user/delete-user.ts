@@ -1,7 +1,7 @@
 import { IUserRepository } from "../../contracts/i-user-repository";
 import { IUseCase } from "../i-use-case";
 
-class DeleteUser implements IUseCase<void> {
+class DeleteUser implements IUseCase {
   execute({
     userId,
     userRepository,

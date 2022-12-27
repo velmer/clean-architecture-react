@@ -12,10 +12,6 @@ const UsersPage: React.FC = () => {
     setUsers(users);
   };
 
-  const onUserAdded = () => {
-    fetchUsers();
-  };
-
   useEffect(() => {
     fetchUsers();
   }, []);
@@ -23,10 +19,10 @@ const UsersPage: React.FC = () => {
   return (
     <>
       <h1>Users</h1>
-      <UserList users={users} />
+      <UserList users={users} onUserDeleted={() => fetchUsers()} />
       <hr />
       <h2>Form</h2>
-      <UserForm onUserAdded={() => onUserAdded()} />
+      <UserForm onUserAdded={() => fetchUsers()} />
     </>
   );
 };

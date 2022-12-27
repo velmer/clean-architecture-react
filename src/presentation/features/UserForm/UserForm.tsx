@@ -19,19 +19,20 @@ const UserForm: React.FC<Props> = (props: Props) => {
   const [user, setUser] = useState<User>(initialUser);
 
   const onChange = ({ key, value }: { key: string; value: string }): void => {
-    if (value === "error") {
-      throw new Error("User not allowed!");
-    }
-
     setUser((user) => {
       return { ...user, [key]: value };
     });
   };
   
   const submit = async (e: React.MouseEvent) => {
-    e.preventDefault();
-    await CreateUser.execute({ user, userRepository: DC.repositories.userRepository });
-    props.onUserAdded();
+    try {
+      e.preventDefault();
+      await CreateUser.execute({ user, userRepository: DC.repositories.userRepository });
+      setUser(initialUser);
+      props.onUserAdded();
+    } catch (error: any) {
+      alert(error.message);
+    }
   }
 
   return (
