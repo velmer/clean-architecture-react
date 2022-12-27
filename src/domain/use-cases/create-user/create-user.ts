@@ -11,12 +11,10 @@ class CreateUser implements IUseCase {
     user: User;
     userRepository: IUserRepository;
   }): Promise<User> {
-    try {
-      await ValidateUser.execute({ user });
-    } catch (userValidationError: any) {
-      const firstErrorField = Object.keys(userValidationError)[0];
-      const firstErrorMessage = userValidationError[firstErrorField];
-      throw new Error(firstErrorMessage);
+    const userValidation = ValidateUser.execute({ user });
+
+    if (Object.keys(userValidation).length !== 0) {
+      throw new Error();
     }
 
     return userRepository.create(user);

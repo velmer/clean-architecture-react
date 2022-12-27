@@ -2,17 +2,20 @@ import { User, UserValidation } from "../../entities/user";
 import { IUseCase } from "../i-use-case";
 
 class ValidateUser implements IUseCase {
-  execute({ user }: { user: User }): Promise<UserValidation | null> {
+  execute({ user }: { user: User }): UserValidation {
     const userValidation = {} as UserValidation;
 
-    userValidation.name = this.validateName(user.name);
-    userValidation.email = this.validateEmail(user.email);
+    const nameValidation = this.validateName(user.name);
+    const emailValidation = this.validateEmail(user.email);
 
-    const hasError = Object.entries(userValidation).some(
-      ([_, errorMessage]) => !!errorMessage
-    );
+    if (nameValidation) {
+      userValidation.name = nameValidation;
+    }
+    if (emailValidation) {
+      userValidation.email = emailValidation;
+    }
 
-    return hasError ? Promise.reject(userValidation) : Promise.resolve(null);
+    return userValidation;
   }
 
   private validateName(name: string): string {

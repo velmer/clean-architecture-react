@@ -1,7 +1,10 @@
-import React, { useState } from "react";
-import { User } from "../../../domain/entities/user";
+import React from "react";
+import { Formik, Form, Field, ErrorMessage, FormikHelpers } from 'formik';
+
 import { CreateUser } from "../../../domain/use-cases/create-user";
 import { DC } from "../../../infrastructure/dependency-container";
+import { ValidateUser } from "../../../domain/use-cases/validate-user";
+import { User } from "../../../domain/entities/user";
 
 interface Props {
   onUserAdded: () => void;
@@ -13,57 +16,53 @@ const initialUser = {
   email: "",
   gender: "male",
   status: "active",
-};
+} as User;
 
-const UserForm: React.FC<Props> = (props: Props) => {
-  const [user, setUser] = useState<User>(initialUser);
+const UserForm: React.FC<Props> = ({ onUserAdded }: Props) => {
+  const validate = (user: User) => ValidateUser.execute({ user });
 
-  const onChange = ({ key, value }: { key: string; value: string }): void => {
-    setUser((user) => {
-      return { ...user, [key]: value };
-    });
-  };
-  
-  const submit = async (e: React.MouseEvent) => {
+  const onSubmit = async (user: User, { resetForm }: FormikHelpers<User>) => {
     try {
-      e.preventDefault();
       await CreateUser.execute({ user, userRepository: DC.repositories.userRepository });
-      setUser(initialUser);
-      props.onUserAdded();
+      resetForm();
+      onUserAdded();
     } catch (error: any) {
-      alert(error.message);
+      const { field, message } = error.response.data[0]
+      alert(`${field} ${message}`);
     }
-  }
+  };
 
   return (
-    <form>
-      Name:{" "}
-      <input
-        type="text"
-        name="name"
-        value={user?.name}
-        onChange={(e) =>
-          onChange({ key: e.target.name, value: e.target.value })
-        }
-      />
-      <br />
-      Email:{" "}
-      <input
-        type="text"
-        name="email"
-        value={user?.email}
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-          onChange({ key: e.target.name, value: e.target.value })
-        }
-      />
-      <br />
-      <button
-        type="submit"
-        onClick={(e) => submit(e)}
-      >
-        Create
-      </button>
-    </form>
+    <Formik initialValues={initialUser} validate={validate} onSubmit={onSubmit}>
+      {({ isSubmitting }) => (
+      <Form>
+        Name:
+        <Field
+          type="text"
+          name="name"
+        />
+        <ErrorMessage name="name" />
+
+        <br />
+
+        Email:
+        <Field
+          type="text"
+          name="email"
+        />
+        <ErrorMessage name="email" />
+
+        <br />
+
+        <button
+          type="submit"
+          disabled={isSubmitting}
+        >
+          Create
+        </button>
+      </Form>
+)}
+    </Formik>
   );
 };
 
