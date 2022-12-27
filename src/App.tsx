@@ -1,4 +1,4 @@
-import UsersPage from "./pages/users";
+import UsersPage from "./presentation/pages/users";
 
 function App() {
   return <UsersPage />;

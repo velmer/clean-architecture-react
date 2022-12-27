@@ -1,4 +1,4 @@
-type User = {
+export type User = {
   id: number | null;
   name: string;
   email: string;
@@ -6,4 +6,6 @@ type User = {
   status: string;
 };
 
-export default User;
+export type UserValidation = {
+  [prop in keyof User]: string;
+};

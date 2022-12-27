@@ -1,4 +1,4 @@
-import User from "../../types/user";
+import { User } from "../../../domain/entities/user";
 
 interface Props {
   users: User[];

@@ -1,14 +1,12 @@
 import { useState } from "react";
-import User from "../types/user";
-import goRest from "../externals/axios/go-rest";
+import { User } from "../../domain/entities/user";
+// import goRest from "../../infrastructure/http-client/axios-adapter";
 
 const useGetUsers = () => {
   const [users, setUsers] = useState<User[]>([]);
 
   const execute = async () => {
-    const response = await goRest.get("/users");
-
-    setUsers(response.data);
+    setUsers([]);
   };
 
   return {

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import goRest from "../externals/axios/go-rest";
-import User from "../types/user";
+import { AxiosAdapter } from "../../infrastructure/http-client/axios-adapter";
+import { User } from "../../domain/entities/user";
 
 const useCreateUser = () => {
   const initialUser = {
@@ -24,9 +24,6 @@ const useCreateUser = () => {
   };
 
   const execute = async (): Promise<void> => {
-    const response = await goRest.post("/users", user);
-
-    setUser(initialUser);
     return;
   };
 
