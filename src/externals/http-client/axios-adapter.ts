@@ -2,9 +2,9 @@ import axios from "axios";
 import { IHttpClient } from "../../app/contracts/i-http-client";
 
 const goRest = axios.create({
-  baseURL: process.env.REACT_APP_GOREST_BASE_URL,
+  baseURL: import.meta.env.VITE_GOREST_BASE_URL,
   headers: {
-    Authorization: `Bearer ${process.env.REACT_APP_GOREST_TOKEN}`,
+    Authorization: `Bearer ${import.meta.env.VITE_GOREST_TOKEN}`,
   },
 });
 
