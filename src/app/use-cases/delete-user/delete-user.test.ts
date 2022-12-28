@@ -27,15 +27,4 @@ describe("DeleteUser", () => {
 
     expect(persistedUser).toBeUndefined();
   });
-
-  it("throws an error when user does not exist", async () => {
-    try {
-      await DeleteUser.execute({
-        userId: 1,
-        userRepository,
-      });
-    } catch (error: any) {
-      expect(error.message).toEqual("User does not exist");
-    }
-  });
 });
