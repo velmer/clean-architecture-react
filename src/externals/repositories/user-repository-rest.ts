@@ -13,6 +13,10 @@ export class UserRepositoryRest implements IUserRepository {
     return this.httpClient.post("/users", user);
   }
 
+  getById(userId: number): Promise<User | null> {
+    return this.httpClient.get(`/users/${userId}`);
+  }
+
   listAll(): Promise<User[]> {
     return this.httpClient.get("/users");
   }

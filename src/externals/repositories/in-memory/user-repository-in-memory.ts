@@ -10,6 +10,11 @@ export default class UserRepositoryInMemory implements IUserRepository {
     return Promise.resolve(user);
   }
 
+  getById(userId: number): Promise<User | null> {
+    const userIndex = this.findUserIndexByUserId(userId);
+    return Promise.resolve(userIndex !== -1 ? this.users[userIndex] : null);
+  }
+
   delete(userId: number): Promise<void> {
     const userIndex = this.findUserIndexByUserId(userId);
     this.users.splice(userIndex, 1);
