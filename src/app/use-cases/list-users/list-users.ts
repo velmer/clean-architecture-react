@@ -8,7 +8,7 @@ class ListUsers implements IUseCase {
   }: {
     userRepository: IUserRepository;
   }): Promise<User[]> {
-    return userRepository.listUsers();
+    return userRepository.listAll();
   }
 }
 

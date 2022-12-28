@@ -7,5 +7,5 @@ export type User = {
 };
 
 export type UserValidation = {
-  [prop in keyof User]: string;
+  [prop in keyof User]?: string;
 };

@@ -13,11 +13,15 @@ export class UserRepositoryRest implements IUserRepository {
     return this.httpClient.post("/users", user);
   }
 
-  listUsers(): Promise<User[]> {
+  listAll(): Promise<User[]> {
     return this.httpClient.get("/users");
   }
 
   delete(userId: number): Promise<void> {
     return this.httpClient.delete(`/users/${userId}`);
+  }
+
+  deleteAll(): Promise<void> {
+    return this.httpClient.delete("/users/");
   }
 }
