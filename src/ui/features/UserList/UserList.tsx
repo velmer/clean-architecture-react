@@ -1,5 +1,5 @@
-import { User } from "../../../domain/entities/user";
-import UserListItem from "./components/UserListItem";
+import { User } from "../../../entities/user";
+import { UserListItem } from "./components/UserListItem";
 
 interface Props {
   users: User[];

@@ -1,5 +1,5 @@
-import { IHttpClient } from "../../infrastructure/http-client/i-http-client";
-import { User } from "../entities/user";
+import { IHttpClient } from "./i-http-client";
+import { User } from "../../entities/user";
 
 export interface IUserRepository {
   readonly httpClient: IHttpClient;

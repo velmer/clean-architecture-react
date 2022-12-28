@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { User } from "../../domain/entities/user";
-import { DC } from "../../infrastructure/dependency-container";
+import { User } from "../../entities/user";
+import { DC } from "../../externals/dependency-container";
 import { UserForm } from "../features/UserForm";
 import { UserList } from "../features/UserList";
 
