@@ -2,6 +2,12 @@
   "name": "clean-architecture-react",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "^16.13.0",
+    "pnpm": "please-use-yarn",
+    "npm": "please-use-yarn",
+    "yarn": "^1.19.1"
+  },
   "scripts": {
     "build": "vite build",
     "preview": "vite preview",
