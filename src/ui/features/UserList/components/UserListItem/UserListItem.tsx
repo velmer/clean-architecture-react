@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { User } from "../../../../../entities/user";
-import { DeleteUser } from "../../../../../app/use-cases/delete-user";
-import { DC } from "../../../../../externals/dependency-container";
+import { User } from "@/entities/user";
+import { DeleteUser } from "@/app/use-cases/delete-user";
+import { DC } from "@/externals/dependency-container";
 
 interface Props {
   user: User;

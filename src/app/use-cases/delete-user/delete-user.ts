@@ -1,4 +1,4 @@
-import { IUserRepository } from "../../contracts/i-user-repository";
+import { IUserRepository } from "@/app/contracts/i-user-repository";
 import { IUseCase } from "../i-use-case";
 
 class DeleteUser implements IUseCase {

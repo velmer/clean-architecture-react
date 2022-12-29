@@ -1,8 +1,8 @@
+import { IUserRepository } from "@/app/contracts/i-user-repository";
+import { CreateUser } from "@/app/use-cases/create-user";
+import UserRepositoryInMemory from "@/externals/repositories/in-memory/user-repository-in-memory";
+import { User } from "@/entities/user";
 import { ListUsers } from ".";
-import { User } from "../../../entities/user";
-import UserRepositoryInMemory from "../../../externals/repositories/in-memory/user-repository-in-memory";
-import { IUserRepository } from "../../contracts/i-user-repository";
-import { CreateUser } from "../create-user";
 
 describe("ListUsers", () => {
   let userRepository: IUserRepository;

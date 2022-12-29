@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { User } from "../../entities/user";
-import { DC } from "../../externals/dependency-container";
-import { UserForm } from "../features/UserForm";
-import { UserList } from "../features/UserList";
+import { User } from "@/entities/user";
+import { DC } from "@/externals/dependency-container";
+import { UserForm } from "@/ui/features/UserForm";
+import { UserList } from "@/ui/features/UserList";
 
 const UsersPage: React.FC = () => {
   const [users, setUsers] = useState<User[]>([]);

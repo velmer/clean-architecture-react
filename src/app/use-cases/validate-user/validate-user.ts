@@ -1,4 +1,4 @@
-import { User, UserValidation } from "../../../entities/user";
+import { User, UserValidation } from "@/entities/user";
 import { IUseCase } from "../i-use-case";
 
 class ValidateUser implements IUseCase {

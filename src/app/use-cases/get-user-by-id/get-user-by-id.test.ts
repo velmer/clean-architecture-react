@@ -1,7 +1,7 @@
-import { User } from "../../../entities/user";
-import UserRepositoryInMemory from "../../../externals/repositories/in-memory/user-repository-in-memory";
-import { IUserRepository } from "../../contracts/i-user-repository";
-import { CreateUser } from "../create-user";
+import { IUserRepository } from "@/app/contracts/i-user-repository";
+import { CreateUser } from "@/app/use-cases/create-user";
+import { User } from "@/entities/user";
+import UserRepositoryInMemory from "@/externals/repositories/in-memory/user-repository-in-memory";
 import GetUserById from "./get-user-by-id";
 
 describe("GetUserById", () => {

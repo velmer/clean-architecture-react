@@ -1,6 +1,6 @@
-import { IUserRepository } from "../../app/contracts/i-user-repository";
-import { User } from "../../entities/user";
-import { IHttpClient } from "../../app/contracts/i-http-client";
+import { IUserRepository } from "@/app/contracts/i-user-repository";
+import { User } from "@/entities/user";
+import { IHttpClient } from "@/app/contracts/i-http-client";
 
 export class UserRepositoryRest implements IUserRepository {
   readonly httpClient: IHttpClient;

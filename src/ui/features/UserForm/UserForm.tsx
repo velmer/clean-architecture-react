@@ -1,9 +1,9 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage, FormikHelpers } from 'formik';
-import { CreateUser } from "../../../app/use-cases/create-user";
-import { DC } from "../../../externals/dependency-container";
-import { ValidateUser } from "../../../app/use-cases/validate-user";
-import { User } from "../../../entities/user";
+import { CreateUser } from "@/app/use-cases/create-user";
+import { DC } from "@/externals/dependency-container";
+import { User } from "@/entities/user";
+import { ValidateUser } from "@/app/use-cases/validate-user";
 
 interface Props {
   onUserAdded: () => void;

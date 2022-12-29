@@ -1,6 +1,6 @@
 /* eslint-disable jest/no-conditional-expect */
-import UserRepositoryInMemory from "../../../externals/repositories/in-memory/user-repository-in-memory";
-import { User } from "../../../entities/user";
+import { User } from "@/entities/user";
+import UserRepositoryInMemory from "@/externals/repositories/in-memory/user-repository-in-memory";
 import CreateUser from "./create-user";
 
 describe("CreateUser", () => {

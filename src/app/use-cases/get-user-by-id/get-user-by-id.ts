@@ -1,5 +1,5 @@
-import { User } from "../../../entities/user";
-import { IUserRepository } from "../../contracts/i-user-repository";
+import { User } from "@/entities/user";
+import { IUserRepository } from "@/app/contracts/i-user-repository";
 import { IUseCase } from "../i-use-case";
 
 class GetUserById implements IUseCase {

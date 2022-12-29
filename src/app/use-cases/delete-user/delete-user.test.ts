@@ -1,9 +1,8 @@
-/* eslint-disable jest/no-conditional-expect */
-import { DeleteUser } from ".";
-import { User } from "../../../entities/user";
-import UserRepositoryInMemory from "../../../externals/repositories/in-memory/user-repository-in-memory";
-import { IUserRepository } from "../../contracts/i-user-repository";
+import { User } from "@/entities/user";
+import UserRepositoryInMemory from "@/externals/repositories/in-memory/user-repository-in-memory";
+import { IUserRepository } from "@/app/contracts/i-user-repository";
 import { CreateUser } from "../create-user";
+import { DeleteUser } from ".";
 
 describe("DeleteUser", () => {
   let userRepository: IUserRepository;

@@ -1,6 +1,6 @@
 /* eslint-disable jest/no-conditional-expect */
 import { ValidateUser } from ".";
-import { User } from "../../../entities/user";
+import { User } from "@/entities/user";
 
 describe("ValidateUser", () => {
   it("returns an empty validation object when there is no error", () => {

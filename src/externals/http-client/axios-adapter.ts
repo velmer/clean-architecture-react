@@ -1,5 +1,5 @@
 import axios from "axios";
-import { IHttpClient } from "../../app/contracts/i-http-client";
+import { IHttpClient } from "@/app/contracts/i-http-client";
 
 const goRest = axios.create({
   baseURL: import.meta.env.VITE_GOREST_BASE_URL,

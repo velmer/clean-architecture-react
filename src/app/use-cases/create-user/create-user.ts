@@ -1,5 +1,5 @@
-import { IUserRepository } from "../../contracts/i-user-repository";
-import { User, UserValidation } from "../../../entities/user";
+import { IUserRepository } from "@/app/contracts/i-user-repository";
+import { User, UserValidation } from "@/entities/user";
 import { IUseCase } from "../i-use-case";
 import { ValidateUser } from "../validate-user";
 
