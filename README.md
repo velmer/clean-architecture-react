@@ -1,46 +1,54 @@
-# Getting Started with Create React App
+# React + Typescript + Clean Architecture Starter
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a repository to start a new React + Typescript project following SOLID principles (Clean Architecture).
 
-## Available Scripts
+## Layers
 
-In the project directory, you can run:
+This project has 4 layers:
 
-### `npm start`
+- Entities: entities of the system (enterprise business rules)
+- App: use-cases of the system (application business rules) and contracts to interact with external services
+- Externals: implementations with external services of the contracts defined in the Application layer
+- UI: presentation layer (regular React project structure) isolated from the core business rules
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Install dependencies
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+```
+$ yarn
+```
 
-### `npm test`
+## Run the app
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+$ yarn start
+```
 
-### `npm run build`
+## Build the app
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+$ yarn build
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Preview the production version locally
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+$ yarn preview
+```
 
-### `npm run eject`
+## Run tests
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```
+$ yarn test
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Watch mode
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```
+$ yarn test:watch
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Generate coverage
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+$ yarn coverage
+```
