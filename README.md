@@ -2,6 +2,50 @@
 
 This is a repository to start a new React + Typescript project following SOLID principles (Clean Architecture).
 
+## Scripts
+
+### Install dependencies
+
+```
+$ yarn
+```
+
+### Run the app
+
+```
+$ yarn start
+```
+
+### Build the app
+
+```
+$ yarn build
+```
+
+### Preview the production version locally
+
+```
+$ yarn preview
+```
+
+### Run tests
+
+```
+$ yarn test
+```
+
+#### Watch mode
+
+```
+$ yarn test:watch
+```
+
+#### Generate coverage
+
+```
+$ yarn coverage
+```
+
 ## Layers
 
 This project has 4 layers:
@@ -11,44 +55,52 @@ This project has 4 layers:
 - Externals: implementations with external services of the contracts defined in the Application layer
 - UI: presentation layer (regular React project structure) isolated from the core business rules
 
-## Install dependencies
+## Features
 
-```
-$ yarn
-```
+This repository supports the following features:
 
-## Run the app
+- Path aliases with `@/` (e.g., `import { User } from "@/entities/user";`)
 
-```
-$ yarn start
-```
+## Organization
 
-## Build the app
+This codebase has 5 main folders:
 
-```
-$ yarn build
-```
+- `src/entities`: To define the entities
 
-## Preview the production version locally
+For example: There is an entity `User`.
 
-```
-$ yarn preview
-```
+- `src/app/contracts`: To define the contracts that should be followed especially by external items like `IUserRepository`:
 
-## Run tests
+1. create()
+2. update()
+3. delete()
+4. deleteAll()
+5. getById()
+6. listAll()
 
-```
-$ yarn test
-```
+- `src/app/use-cases`: To define the system actions. For example:
 
-### Watch mode
+1. create-user
+2. update-user
+3. delete-user
+4. get-user-by-id
+5. list-users
 
-```
-$ yarn test:watch
-```
+Each use case should have its automated tests.
 
-### Generate coverage
+- `src/externals`: To define the rest, implementations that are not important for the business rules like Http Clients, Libraries, Cache, etc.
 
-```
-$ yarn coverage
-```
+- `src/ui`: To define the UI or Presentation layer of the app, in this case a React project.
+
+## Libraries
+
+- `React` as the UI Library
+- `Axios` as the Http Client
+- `Formik` for handling forms
+- `Vitest` for unit and integration tests
+
+## Conclusion
+
+This is a template following SOLID principles with React + Typescript. The goal here is to use REact only in the UI layer, in order to decouple the business rules.
+
+Feel free to use the best practices for React in terms of routing, componentization, contexts, hooks, etc. Business rules should be reserverd to `use cases` and `entities`.
