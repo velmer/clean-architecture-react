@@ -15,8 +15,8 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "coverage": "vitest run --coverage",
-    "lint": "eslint --ext .js,.jsx,.ts,.tsx src",
-    "lint:fix": "eslint --ext .js,.jsx,.ts,.tsx src --fix"
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx,.json src",
+    "lint:fix": "eslint --ext .js,.jsx,.ts,.tsx,.json src --fix"
   },
   "dependencies": {
     "axios": "^1.2.1",
