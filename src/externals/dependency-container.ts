@@ -1,7 +1,8 @@
-import { IUserRepository } from "@/app/contracts/i-user-repository";
-import { IHttpClient } from "@/app/contracts/i-http-client";
-import { AxiosAdapter } from "./http-client/axios-adapter";
-import { UserRepositoryRest } from "./repositories/user-repository-rest";
+import { IHttpClient } from '@/app/contracts/i-http-client';
+import { IUserRepository } from '@/app/contracts/i-user-repository';
+
+import { AxiosAdapter } from './http-client/axios-adapter';
+import { UserRepositoryRest } from './repositories/user-repository-rest';
 
 export interface IDependencyContainer {
   repositories: {

@@ -1,10 +1,11 @@
-import { IUserRepository } from "@/app/contracts/i-user-repository";
-import { User } from "@/entities/user";
+import { IUserRepository } from '@/app/contracts/i-user-repository';
+import { User } from '@/entities/user';
 
 export default class UserRepositoryInMemory implements IUserRepository {
   private users: User[] = [];
 
   create(user: User): Promise<User> {
+    // eslint-disable-next-line no-param-reassign
     user.id = this.users.length + 1;
     this.users.push(user);
     return Promise.resolve(user);

@@ -1,3 +1,3 @@
-import ValidateUser from "./validate-user";
+import ValidateUser from './validate-user';
 
 export { ValidateUser };

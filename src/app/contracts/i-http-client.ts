@@ -1,9 +1,9 @@
 export interface IHttpClient {
-  get(url: string): Promise<any>;
+  get(url: string): Promise<unknown>;
 
-  post(url: string, body: any): Promise<any>;
+  post(url: string, body: unknown): Promise<unknown>;
 
-  put(url: string, body: any): Promise<any>;
+  put(url: string, body: unknown): Promise<unknown>;
 
-  delete(url: string): Promise<any>;
+  delete(url: string): Promise<unknown>;
 }

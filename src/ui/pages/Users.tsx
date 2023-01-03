@@ -1,15 +1,16 @@
-import React, { useEffect, useState } from "react";
-import { User } from "@/entities/user";
-import { DC } from "@/externals/dependency-container";
-import { UserForm } from "@/ui/features/UserForm";
-import { UserList } from "@/ui/features/UserList";
+import { useEffect, useState } from 'react';
 
-const UsersPage: React.FC = () => {
+import { User } from '@/entities/user';
+import { DC } from '@/externals/dependency-container';
+import { UserForm } from '@/ui/features/UserForm';
+import { UserList } from '@/ui/features/UserList';
+
+function UsersPage() {
   const [users, setUsers] = useState<User[]>([]);
 
   const fetchUsers = async () => {
-    const users = await DC.httpClient.get('/users');
-    setUsers(users);
+    const usersData = (await DC.httpClient.get('/users')) as User[];
+    setUsers(usersData);
   };
 
   useEffect(() => {
@@ -25,6 +26,6 @@ const UsersPage: React.FC = () => {
       <UserForm onUserAdded={() => fetchUsers()} />
     </>
   );
-};
+}
 
 export default UsersPage;

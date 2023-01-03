@@ -1,3 +1,3 @@
-import DeleteUser from "./delete-user";
+import DeleteUser from './delete-user';
 
 export { DeleteUser };

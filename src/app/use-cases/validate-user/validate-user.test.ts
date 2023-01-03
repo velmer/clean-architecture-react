@@ -1,12 +1,12 @@
-/* eslint-disable jest/no-conditional-expect */
-import { ValidateUser } from ".";
-import { User } from "@/entities/user";
+import { User } from '@/entities/user';
 
-describe("ValidateUser", () => {
-  it("returns an empty validation object when there is no error", () => {
+import { ValidateUser } from '.';
+
+describe('ValidateUser', () => {
+  it('returns an empty validation object when there is no error', () => {
     const user = {
-      name: "Testevaldo Silva",
-      email: "testevaldo@gmail.com",
+      name: 'Testevaldo Silva',
+      email: 'testevaldo@gmail.com',
     } as User;
 
     const userValidation = ValidateUser.execute({ user });
@@ -14,40 +14,40 @@ describe("ValidateUser", () => {
     expect(userValidation).toMatchObject({});
   });
 
-  it("returns an error in the name when it is empty", () => {
+  it('returns an error in the name when it is empty', () => {
     const user = {
-      name: "",
-      email: "testevaldo@gmail.com",
+      name: '',
+      email: 'testevaldo@gmail.com',
     } as User;
 
     const userValidation = ValidateUser.execute({ user });
 
     expect(userValidation).toMatchObject({
-      name: "Name is required.",
+      name: 'Name is required.',
     });
   });
 
-  it("returns an error in the name when it is invalid", () => {
+  it('returns an error in the name when it is invalid', () => {
     const user = {
-      name: "error",
-      email: "testevaldo@gmail.com",
+      name: 'error',
+      email: 'testevaldo@gmail.com',
     } as User;
 
     const userValidation = ValidateUser.execute({ user });
 
     expect(userValidation).toMatchObject({
-      name: "Name is invalid.",
+      name: 'Name is invalid.',
     });
   });
 
-  it("returns an error in the name when it does not have the expected length", () => {
+  it('returns an error in the name when it does not have the expected length', () => {
     const userLessChars = {
-      name: "te",
-      email: "testevaldo@gmail.com",
+      name: 'te',
+      email: 'testevaldo@gmail.com',
     } as User;
     const userMoreChars = {
-      name: "t".repeat(51),
-      email: "testevaldo@gmail.com",
+      name: 't'.repeat(51),
+      email: 'testevaldo@gmail.com',
     } as User;
 
     const userValidationLessChars = ValidateUser.execute({
@@ -58,50 +58,50 @@ describe("ValidateUser", () => {
     });
 
     expect(userValidationLessChars).toMatchObject({
-      name: "Name must have at least 3 and at most 50 characters.",
+      name: 'Name must have at least 3 and at most 50 characters.',
     });
     expect(userValidationMoreChars).toMatchObject({
-      name: "Name must have at least 3 and at most 50 characters.",
+      name: 'Name must have at least 3 and at most 50 characters.',
     });
   });
 
-  it("returns an error in the email when it is empty", () => {
+  it('returns an error in the email when it is empty', () => {
     const user = {
-      name: "Testevaldo Silva",
-      email: "",
+      name: 'Testevaldo Silva',
+      email: '',
     } as User;
 
     const userValidation = ValidateUser.execute({ user });
 
     expect(userValidation).toMatchObject({
-      email: "Email is required.",
+      email: 'Email is required.',
     });
   });
 
-  it("returns an error in the email when it is invalid", () => {
+  it('returns an error in the email when it is invalid', () => {
     const user = {
-      name: "Testevaldo Silva",
-      email: "invalid email",
+      name: 'Testevaldo Silva',
+      email: 'invalid email',
     } as User;
 
     const userValidation = ValidateUser.execute({ user });
 
     expect(userValidation).toMatchObject({
-      email: "Email is invalid.",
+      email: 'Email is invalid.',
     });
   });
 
-  it("returns multiple errors when has errors in multiple fields", () => {
+  it('returns multiple errors when has errors in multiple fields', () => {
     const user = {
-      name: "",
-      email: "invalid email",
+      name: '',
+      email: 'invalid email',
     } as User;
 
     const userValidation = ValidateUser.execute({ user });
 
     expect(userValidation).toMatchObject({
-      name: "Name is required.",
-      email: "Email is invalid.",
+      name: 'Name is required.',
+      email: 'Email is invalid.',
     });
   });
 });

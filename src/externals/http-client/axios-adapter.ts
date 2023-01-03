@@ -1,5 +1,8 @@
-import axios from "axios";
-import { IHttpClient } from "@/app/contracts/i-http-client";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable class-methods-use-this */
+import axios from 'axios';
+
+import { IHttpClient } from '@/app/contracts/i-http-client';
 
 const goRest = axios.create({
   baseURL: import.meta.env.VITE_GOREST_BASE_URL,

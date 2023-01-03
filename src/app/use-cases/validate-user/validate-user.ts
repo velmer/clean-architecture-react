@@ -1,12 +1,13 @@
-import { User, UserValidation } from "@/entities/user";
-import { IUseCase } from "../i-use-case";
+import { User, UserValidation } from '@/entities/user';
+
+import { IUseCase } from '../i-use-case';
 
 class ValidateUser implements IUseCase {
   execute({ user }: { user: User }): UserValidation {
     const userValidation = {} as UserValidation;
 
-    const nameValidation = this.validateName(user.name);
-    const emailValidation = this.validateEmail(user.email);
+    const nameValidation = validateName(user.name);
+    const emailValidation = validateEmail(user.email);
 
     if (nameValidation) {
       userValidation.name = nameValidation;
@@ -17,26 +18,29 @@ class ValidateUser implements IUseCase {
 
     return userValidation;
   }
+}
 
-  private validateName(name: string): string {
-    if (!name) {
-      return "Name is required.";
-    } else if (name.toLocaleLowerCase() === "error") {
-      return "Name is invalid.";
-    } else if (name.length < 3 || name.length > 50) {
-      return "Name must have at least 3 and at most 50 characters.";
-    }
-    return "";
+function validateName(name: string): string | null {
+  if (!name) {
+    return 'Name is required.';
   }
+  if (name.toLocaleLowerCase() === 'error') {
+    return 'Name is invalid.';
+  }
+  if (name.length < 3 || name.length > 50) {
+    return 'Name must have at least 3 and at most 50 characters.';
+  }
+  return null;
+}
 
-  private validateEmail(email: string): string {
-    if (!email) {
-      return "Email is required.";
-    } else if (!email.includes("@")) {
-      return "Email is invalid.";
-    }
-    return "";
+function validateEmail(email: string): string | null {
+  if (!email) {
+    return 'Email is required.';
   }
+  if (!email.includes('@')) {
+    return 'Email is invalid.';
+  }
+  return null;
 }
 
 export default new ValidateUser();

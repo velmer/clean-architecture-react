@@ -101,6 +101,6 @@ Each use case should have its automated tests.
 
 ## Conclusion
 
-This is a template following SOLID principles with React + Typescript. The goal here is to use REact only in the UI layer, in order to decouple the business rules.
+This is a template following SOLID principles with React + Typescript. The goal here is to use React only in the UI layer, in order to decouple the business rules.
 
 Feel free to use the best practices for React in terms of routing, componentization, contexts, hooks, etc. Business rules should be reserverd to `use cases` and `entities`.

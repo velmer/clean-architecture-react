@@ -1,16 +1,11 @@
-import { IUserRepository } from "@/app/contracts/i-user-repository";
-import { User, UserValidation } from "@/entities/user";
-import { IUseCase } from "../i-use-case";
-import { ValidateUser } from "../validate-user";
+import { IUserRepository } from '@/app/contracts/i-user-repository';
+import { User, UserValidation } from '@/entities/user';
+
+import { IUseCase } from '../i-use-case';
+import { ValidateUser } from '../validate-user';
 
 class CreateUser implements IUseCase {
-  async execute({
-    user,
-    userRepository,
-  }: {
-    user: User;
-    userRepository: IUserRepository;
-  }): Promise<User> {
+  async execute({ user, userRepository }: { user: User; userRepository: IUserRepository }): Promise<User> {
     const userValidation = ValidateUser.execute({ user });
 
     if (hasError(userValidation)) {
@@ -21,16 +16,16 @@ class CreateUser implements IUseCase {
   }
 }
 
-const hasError = (userValidation: UserValidation): boolean => {
+function hasError(userValidation: UserValidation): boolean {
   return Object.keys(userValidation).length !== 0;
-};
+}
 
-const getFirstErrorMessage = (userValidation: UserValidation) => {
+function getFirstErrorMessage(userValidation: UserValidation): string | undefined {
   if (!hasError(userValidation)) {
-    return;
+    return undefined;
   }
   const firstErrorKey = Object.keys(userValidation)[0] as keyof UserValidation;
   return userValidation[firstErrorKey];
-};
+}
 
 export default new CreateUser();
